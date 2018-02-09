@@ -61,7 +61,7 @@ int main(){
 					   char respuesta = 's';
 					   do{
 						   string fecha = " "; 
-						   cout<<"Ingrese la fecha (YYYYMMDD)";
+						   cout<<"Ingrese la fecha (20170303)";
 						   cin>>fecha;
 						   temporal1 = vv(fecha);
 						   fechas1.insert(fechas1.end(), temporal1.begin(), temporal1.end());
@@ -75,7 +75,7 @@ int main(){
 							cout<<fechas1.at(i)<<" "<<endl;
 					   }
 					   cout<<"Listado de ordenados"<<endl;
-					   for(int j=0;j<fechas1.size();j++){
+					   for(int j=fechas1.size();j>0;j--){
 							cout<<fechas1.at(j)<<""<<endl;
 					   }
 					   break;
@@ -186,17 +186,20 @@ int randomI(){
 }
 
 vector<string> vv(string fechas){
-	string anio = " ",  mes = " " , dia =" ";
-	int anio1 = 0, mes1 = 0, dia1 = 0;
-	
+	string ano;
+	string mes; 
+	string dia;
+	int anio1;
+	int mes1;
+	int dia1;
 	for(int i=0;i<=7;i++){
 		if(i<4){
-			anio += fechas.at(i);
+			ano += fechas.at(i);
 		}
 		if(i<6 && i>=4){
 			mes+=fechas.at(i);
 		}
-		if(i<5){
+		if(i>5){
 			dia+=fechas.at(i);
 		}
 	}
@@ -276,21 +279,22 @@ vector<string> vv(string fechas){
 	if(mes == "Diciembre"){
 		asigna == 5;
 	}
-	int aniA =0;
-	int exx = 0;
-	int super = 0;
+	int aniA;
+	int exx;
 	string tempol;
 	for(int i=0;i<4;i++){
 		if(i>=1){
-			tempol+=anio.at(i);
+			tempol+=ano.at(i);
 		}
 	}
 	aniA = atoi(tempol.c_str());
-	exx = aniA/4;
-	int aniB = atoi(anio.c_str());
+	exx = (aniA/4);
 
 
-	if(aniB<= 1999){
+	int anib = atoi(ano.c_str());
+
+	int super;
+	if(anib<= 1999){
 		super = 0;
 	}else{
 		super = 6;
@@ -298,7 +302,7 @@ vector<string> vv(string fechas){
 
 	int diaExact = 0;
 	diaExact = diaExact +asigna+aniA+exx+super;
-
+	cout<<diaExact<<endl;
 	string diaSemana;
 
 	if((diaExact/7)<=1 && (diaExact/7)>0){
@@ -322,9 +326,9 @@ vector<string> vv(string fechas){
 	if((diaExact/7)<=0 && (diaExact/7)>0){
 		diaSemana= "Domingo";
 	}
-	stringstream stm;
-	stm<<diaSemana<<", "<< dia <<" de"<<mes<<" del"<<anio;
-	string fechaf = stm.str();
+	stringstream sstm;
+	sstm<<diaSemana<<" , "<< dia <<" de "<<mes<<" del "<<ano;
+	string fechaf = sstm.str();
 
 	vector<string> fechasx;
 	fechasx.push_back(fechaf);
