@@ -301,7 +301,7 @@ vector<string> vv(string fechas){
 
 	int diaExact = 0;
 	diaExact = diaExact +asigna+aniA+exx+super;
-	cout<<diaExact<<endl;
+	//cout<<diaExact<<endl;
 	string diaSemana;
 
 	if((diaExact/7)<=1 && (diaExact/7)>0){
