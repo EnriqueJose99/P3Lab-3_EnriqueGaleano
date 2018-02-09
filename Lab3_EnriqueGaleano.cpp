@@ -329,7 +329,7 @@ vector<string> vv(string fechas){
 	sstm<<diaSemana<<" , "<< dia <<" de "<<mes<<" del "<<ano;
 	string fechaf = sstm.str();
 
-	vector<string> fechasx;
+	std::vector<string> fechasx;
 	fechasx.push_back(fechaf);
 	return fechasx;
 }
