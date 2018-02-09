@@ -63,14 +63,21 @@ int main(){
 						   string fecha = " "; 
 						   cout<<"Ingrese la fecha (YYYYMMDD)";
 						   cin>>fecha;
-						   //temporal1 = 
+						   temporal1 = vv(fecha);
+						   fechas1.insert(fechas1.end(), temporal1.begin(), temporal1.end());
 						   cout<<"desea continuar: "<<endl;
 						   cin>>respuesta;
 
 						
 					   }while(respuesta == 's' || respuesta == 'S');
-
-					   
+						cout<<"Listado de fechas "<<endl;
+					   for(int i=0;i<fechas1.size();i++){
+							cout<<fechas1.at(i)<<" "<<endl;
+					   }
+					   cout<<"Listado de ordenados"<<endl;
+					   for(int j=0;j<fechas1.size();j++){
+							cout<<fechas1.at(j)<<""<<endl;
+					   }
 					   break;
 				   }
 			case 4:{
@@ -187,10 +194,10 @@ vector<string> vv(string fechas){
 			anio += fechas.at(i);
 		}
 		if(i<6 && i>=4){
-			anio+=fechas.at(i);
+			mes+=fechas.at(i);
 		}
 		if(i<5){
-			anio+=fechas.at(i);
+			dia+=fechas.at(i);
 		}
 	}
 
@@ -269,8 +276,9 @@ vector<string> vv(string fechas){
 	if(mes == "Diciembre"){
 		asigna == 5;
 	}
-	int aniA =0;;
+	int aniA =0;
 	int exx = 0;
+	int super = 0;
 	string tempol;
 	for(int i=0;i<4;i++){
 		if(i>=1){
@@ -278,5 +286,48 @@ vector<string> vv(string fechas){
 		}
 	}
 	aniA = atoi(tempol.c_str());
+	exx = aniA/4;
+	int aniB = atoi(anio.c_str());
+
+
+	if(aniB<= 1999){
+		super = 0;
+	}else{
+		super = 6;
+	}
+
+	int diaExact = 0;
+	diaExact = diaExact +asigna+aniA+exx+super;
+
+	string diaSemana;
+
+	if((diaExact/7)<=1 && (diaExact/7)>0){
+		diaSemana= "Lunes";
+	}
+	if((diaExact/7)<=2 && (diaExact/7)>1){
+		diaSemana= "Martes";
+	}
+	if((diaExact/7)<=3 && (diaExact/7)>2){
+		diaSemana= "Miercoles";
+	}
+	if((diaExact/7)<=4 && (diaExact/7)>3){
+		diaSemana= "Jueves";
+	}
+	if((diaExact/7)<=5 && (diaExact/7)>4){
+		diaSemana= "Viernes";
+	}
+	if((diaExact/7)<=6 && (diaExact/7)>5){
+		diaSemana= "Sabado";
+	}
+	if((diaExact/7)<=0 && (diaExact/7)>0){
+		diaSemana= "Domingo";
+	}
+	stringstream stm;
+	stm<<diaSemana<<", "<< dia <<" de"<<mes<<" del"<<anio;
+	string fechaf = stm.str();
+
+	vector<string> fechasx;
+	fechasx.push_back(fechaf);
+	return fechasx;
 }
 
