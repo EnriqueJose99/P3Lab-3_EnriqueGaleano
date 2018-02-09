@@ -291,9 +291,8 @@ vector<string> vv(string fechas){
 	exx = (aniA/4);
 
 
-	int anib = atoi(ano.c_str());
-
 	int super;
+	int anib = atoi(ano.c_str());
 	if(anib<= 1999){
 		super = 0;
 	}else{
